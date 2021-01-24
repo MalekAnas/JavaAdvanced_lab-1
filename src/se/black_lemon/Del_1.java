@@ -56,6 +56,7 @@ public class Del_1 {
 
 
         //5- Vilken är den genomsnittliga ordlängden?
+        //test from arch machine
         int averageLength = Arrays.stream(StringArrayData.austin).mapToInt(String::length).sum() / StringArrayData.austin.length;
         System.out.println("Den genomsnittliga ordlängden: " + averageLength);
 
