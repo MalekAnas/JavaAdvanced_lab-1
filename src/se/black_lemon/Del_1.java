@@ -40,6 +40,7 @@ public class Del_1 {
 
 
         //4- Hur många unika ord med fler än 8 bokstäver?
+        //
         uniqueWordCount = Arrays.stream(StringArrayData.austin)
                 .filter(word -> word.toCharArray().length > 8 )
                 .map(String::toLowerCase)
