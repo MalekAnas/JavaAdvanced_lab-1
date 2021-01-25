@@ -26,6 +26,8 @@ public class EntryPoint {
 
         MyObject[]  Over20Values = arrOfValOver20(hundredsObj);
         changeNames(hundredsObj);
+
+        lekVidare(hundredsObj);
     }
 
 
@@ -55,9 +57,7 @@ public class EntryPoint {
                 })
                 .collect(Collectors.toList());
 
-        listObjs.forEach(obj -> {
-            System.out.println(obj.toString());
-        });
+        getMyObjects(listObjs, "Changing names");
     }
 
     //2. Beräkna medelvärdet av alla values
@@ -81,19 +81,34 @@ public class EntryPoint {
                 .filter(x -> x.getValue() > 20)
                 .collect(Collectors.toList());
 
-        System.out.println("---------- Array of objs with Values over 20 -----------");
-        above20.forEach(obj -> {
+        return getMyObjects(above20, "Array of objs with Values over 20");
+    }
+
+
+    private static MyObject[] lekVidare(MyObject[] hundredRandom){
+        List<MyObject> listObjs = Arrays.asList(hundredRandom);
+        List<MyObject> evenValuesObj = listObjs
+                .stream()
+                .filter(x -> x.getValue() % 2 == 0)
+                .collect(Collectors.toList());
+
+        return getMyObjects(evenValuesObj, "Objs with even values");
+
+
+    }
+
+    private static MyObject[] getMyObjects(List<MyObject> evenValuesObj, String msg) {
+        System.out.println("---------- " + msg + " -----------");
+        evenValuesObj.forEach(obj -> {
             System.out.println(obj.toString());
         });
 
         System.out.println("------------------------------------------------------------------");
 
 
-        MyObject[] array = new MyObject[above20.size()];
-        above20.toArray(array);
+        MyObject[] array = new MyObject[evenValuesObj.size()];
+        evenValuesObj.toArray(array);
         return array;
     }
-
-
 
 }
